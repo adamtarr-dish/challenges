@@ -1,10 +1,14 @@
 
+import chromedriverLocation
 import unittest
 from selenium import webdriver
     
-class Challenge1(unittest.TestCase):
-    def setUp(self):
-        self.driver = webdriver.Chrome("/usr/local/bin/Chromedriver")
+class challenge1(unittest.TestCase):
+
+#unittest.TestCase tells it that we run setUp, then every method that starts with "test_", then tearDown
+
+    def setUp(self): 
+        self.driver = webdriver.Chrome(chromedriverLocation.mylocation)
 
     def tearDown(self):
         self.driver.close()

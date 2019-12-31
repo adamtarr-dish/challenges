@@ -22,9 +22,12 @@ class Challenge1(unittest.TestCase):
         wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Exotics")))
         self.driver.find_element(By.LINK_TEXT, "Exotics").click()
         wait.until(EC.presence_of_element_located((By.CLASS_NAME, "search-resultstable")))
-        self.driver.find_element(By.CSS_SELECTOR, "#serverSideDataTable_filter .form-control").send_keys("lot_make_desc=\"Porsche\"")
+        #self.driver.find_element(By.CSS_SELECTOR, "#serverSideDataTable_filter .form-control").send_keys("lot_make_desc=\"Porsche\"")
+        self.driver.find_element(By.XPATH, "//*[@id=\"collapseinside3\"]/form/div/input").send_keys("Porsche")
         time.sleep(5)
         assert self.driver.find_element(By.CSS_SELECTOR, ".odd:nth-child(1) > td:nth-child(5) > span").text == "PORSCHE"
 
 if __name__ == '__main__':
     unittest.main()
+
+    #//*[@id="collapseinside3"]/form/div/input
