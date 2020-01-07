@@ -63,13 +63,8 @@ class Challenges(unittest.TestCase):
         self.driver.get("https://www.copart.com/")
         self.driver.maximize_window
         wait.until(EC.presence_of_element_located((By.ID, "input-search")))
-
-        #wait.until(EC.presence_of_element_located(By.XPATH, "//*[@id=\"search-form\"]//input"))
-
-
         
         self.driver.find_element(By.ID, "input-search").send_keys("porsche")
-        #self.driver.find_element(By.CSS_SELECTOR, ".btn-lightblue").click()
         self.driver.find_element(By.XPATH, "//*[@data-uname=\"homepageHeadersearchsubmit\"]").click()
         
         wait.until(EC.presence_of_element_located((By.NAME, "serverSideDataTable_length")))
@@ -111,4 +106,4 @@ class Challenges(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
  
-# python3 -m unittest challenges.Challenges.test_challenge3
+# python3 -m unittest challenges.Challenges.test_challenge5 (or whatever challenge you want)
