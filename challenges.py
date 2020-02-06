@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from challenges.common.screenshot import screenshot
     
 class Challenges(unittest.TestCase):
 
@@ -99,11 +100,25 @@ class Challenges(unittest.TestCase):
         for x, y in damages.items():
             print(y, " ", x)
 
+    def test_challenge6(self):
 
+        wait = WebDriverWait(self.driver,15)
+        self.driver.get("https://www.copart.com/")
+        self.driver.maximize_window
+        wait.until(EC.presence_of_element_located((By.ID, "input-search")))
+        
+        self.driver.find_element(By.ID, "input-search").send_keys("Nissan")
+        self.driver.find_element(By.XPATH, "//*[@data-uname=\"homepageHeadersearchsubmit\"]").click()
+        
+        wait.until(EC.presence_of_element_located((By.NAME, "serverSideDataTable_length")))
+
+        wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id=\"serverSideDataTable_processing\"][contains(@style, 'display: none')]")))
+        modelList = self.driver.find_elements(By.XPATH,"//span[@data-uname=\"lotsearchLotmodel\"]")
         
 
 
 if __name__ == '__main__':
     unittest.main()
  
-# python3 -m unittest challenges.Challenges.test_challenge5 (or whatever challenge you want)
+# 
+#  (or whatever challenge you want)
